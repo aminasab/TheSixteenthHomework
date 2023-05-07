@@ -27,7 +27,7 @@ namespace TheSixteenthProgram
         /// <summary>
         /// Написание запроса, который возвращает список всех пользователей старше 20 лет, у которых есть заказ на продукт с ID=1
         /// </summary>
-        public List<dynamic> AllJoin()
+        public List<OrderCustomerProduct> AllJoin()
         {
             using (var con = new NpgsqlConnection(_connectionString))
             {
@@ -41,7 +41,7 @@ namespace TheSixteenthProgram
                     "ON o.ProductId=p.Id " +
                     "WHERE c.Age>20 AND o.ProductId=1";
 
-                var orders = con.Query(query).ToList();
+                var orders = con.Query<OrderCustomerProduct>(query).ToList();
                 return orders;
             }
         }

@@ -10,7 +10,7 @@
             var result = customerRepository.AllJoin();
             foreach (var res in result)
             {
-                Console.WriteLine($"{res.customerid}, {res.firstname}, {res.lastname}, {res.productid}, {res.stockquantity}, {res.price}");
+                Console.WriteLine($"{res.CustomerId}, {res.FirstName}, {res.LastName}, {res.ProductId}, {res.StockQuantity}, {res.Price}");
             }
 
             // Добавление нового покупателя в базу данных.
