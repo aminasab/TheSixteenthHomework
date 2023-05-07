@@ -32,7 +32,14 @@ namespace TheSixteenthProgram
             using (var con = new NpgsqlConnection(_connectionString))
             {
                 con.Open();
-                string query = "SELECT o.CustomerId, c.FirstName, c.LastName, o.ProductId,p.StockQuantity, p.Price FROM Orders AS o JOIN Customers AS c ON o.CustomerId=c.Id JOIN Products AS p ON o.ProductId=p.Id WHERE c.Age>20 AND o.ProductId=1";
+                string query = "SELECT o.CustomerId, c.FirstName, c.LastName, " +
+                    "o.ProductId,p.StockQuantity, p.Price " +
+                    "FROM Orders AS o " +
+                    "JOIN Customers AS c " +
+                    "ON o.CustomerId=c.Id " +
+                    "JOIN Products AS p " +
+                    "ON o.ProductId=p.Id " +
+                    "WHERE c.Age>20 AND o.ProductId=1";
 
                 var orders = con.Query(query).ToList();
                 return orders;
